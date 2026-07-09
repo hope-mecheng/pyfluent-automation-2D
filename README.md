@@ -18,10 +18,11 @@ For mesher:
 * Change the edgesize struct to include which settings you want.
 * Change the refinement ratios to match whichever ratios you want to involve for the independence study.
 * If you need to change any other configs, go through the other segments and change them as you like.
+* Boundary conditions should be editted through the solver script rather than the mesher script.
 * The file will be outputted as "[CAD name]-mesh_r_[refinement ratio].msh.h5"
 
 For solver:
-* Open up file named "cfd_mesher.py"
+* Open up file named "cfd_solver.py"
 * Search and change variables that matches your project.
 * This file is automated for each refinement ratio and Reynolds number, and velocity gets changed to match the reynolds number in iterations.
 * The file names of exported files include the refinement ratio and Reynolds number.
