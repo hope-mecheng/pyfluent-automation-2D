@@ -6,22 +6,25 @@ import time
 # "no_gui", "hidden_gui", or "gui".
 gui_Set = "gui"
 
-# The supported values are: 'meshing', 'pure_meshing', 'solver', 'solver_icing', 'solver_aero', 'pre_post'
+# 'meshing', 'pure_meshing', 'solver', 'solver_icing', 'solver_aero', 'pre_post'
 fluent_mode = pyFluent.FluentMode.MESHING
 
 precision_type = 'double'
 processor_amount = 4
 
+#CAD CONFIG
 cad_file_name = 'ThePart'
 cad_file_extension = '.stp'
 cad_length_unit = 'mm'
 
+# These parameters were created just for local sizing calculations for the current benchmark problem
 L1 = 30
 L2 = 300
 h = 40
 
 StuLastNumb = 94
 
+# Local Sizing Config
 local_sizing_config = {
     'edgesize_1': {
         'zone_list': ["part1.6","part1.2","part1.4"],
@@ -43,6 +46,7 @@ local_sizing_config = {
     }
 }
 
+# Grid Refinement Ratios
 r = [0.5,1.0,2.0] # mesh quality
 r.sort(reverse=True) # sorts from highest to lowest
 
