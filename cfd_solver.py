@@ -9,7 +9,7 @@ import sys
 # "no_gui", "hidden_gui", or "gui".
 gui_Set = "gui"
 
-# The supported values are: 'meshing', 'pure_meshing', 'solver', 'solver_icing', 'solver_aero', 'pre_post'
+# 'meshing', 'pure_meshing', 'solver', 'solver_icing', 'solver_aero', 'pre_post'
 fluent_mode = pyFluent.FluentMode.MESHING
 
 precision_type = 'double'
@@ -72,33 +72,14 @@ for i in r:
 
     time.sleep(1)
 
-    ## 1. Start logging the Fluent transcript to a temporary file
-    #session.transcript.start("temp_mesh_check.log")
-    #
-    ## 2. Run the mesh check
-    #session.settings.mesh.check()
-    #
-    ## 3. Stop logging so the file saves correctly
-    #session.transcript.stop()
-
-
-    
-    # 4. Read the text back into your string variable
-    #with open("temp_mesh_check.log", "r") as f:
-    #    meshcheck_string = f.read()
-    #
-    ## (Optional) Print it to verify it captured correctly!
-    #print("Captured Mesh Check:\n", meshcheck_string)
-    #max_x = None
 
     for line in meshcheck_string.splitlines():
         if "x-coordinate:" in line:
-            # Splits directly at "max (m) =" to isolate the number on the right side
+
             raw_number = line.split("max (m) =")[1]
             max_x = float(raw_number.strip())
             break
 
-    # Your automated validation check
     if max_x is not None and max_x > L*1e-3 :
         session.settings.mesh.scale(x_scale = 0.001, y_scale = 0.001)
         
@@ -631,4 +612,4 @@ for i in r:
         
         session.settings.file.write_case_data(file_name=file_name_base)
 
-#session.exit()
+session.exit()
