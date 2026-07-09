@@ -82,8 +82,6 @@ for i in r:
 
     if max_x is not None and max_x > L*1e-3 :
         session.settings.mesh.scale(x_scale = 0.001, y_scale = 0.001)
-        
-    #print(f"Parsed Max X: {max_x}")
     
         
     setup = session.settings.setup
